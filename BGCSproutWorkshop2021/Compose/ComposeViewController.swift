@@ -56,17 +56,23 @@ class ComposeViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = sendButton
         textView.becomeFirstResponder()
+        shouldEnableSend()
     }
     
     @IBAction func imageTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "PhotoEditor", bundle: nil)
+        guard let editorViewController = storyboard.instantiateInitialViewController() as? PhotoEditorViewController else { return }
+        editorViewController.originalImage = attachedImage
+        editorViewController.modalPresentationStyle = .overFullScreen
+        present(editorViewController, animated: true, completion: nil)
     }
     
     @objc func cameraTapped() {
         let storyboard = UIStoryboard(name: "PhotoGallery", bundle: nil)
-        guard let galleryNavViewController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
-        guard let galleryViewController = galleryNavViewController.viewControllers.first as? PhotoGalleryViewController else { return }
+        guard let navViewController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+        guard let galleryViewController = navViewController.viewControllers.first as? PhotoGalleryViewController else { return }
         galleryViewController.delegate = self
-        present(galleryNavViewController, animated: true, completion: nil)
+        present(navViewController, animated: true, completion: nil)
     }
 
     func shouldEnableSend() {

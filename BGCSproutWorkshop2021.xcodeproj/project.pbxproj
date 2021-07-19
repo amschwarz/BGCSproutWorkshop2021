@@ -21,6 +21,8 @@
 		2416A55126A4A49F004A2350 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416A55026A4A49F004A2350 /* AlbumModel.swift */; };
 		2416A55326A4A537004A2350 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416A55226A4A537004A2350 /* PhotoManager.swift */; };
 		2416A55526A4F605004A2350 /* UITextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416A55426A4F605004A2350 /* UITextView+Placeholder.swift */; };
+		2416A55826A50839004A2350 /* PhotoEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2416A55726A50839004A2350 /* PhotoEditor.storyboard */; };
+		2416A55A26A50A6E004A2350 /* PhotoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416A55926A50A6D004A2350 /* PhotoEditorViewController.swift */; };
 		24C5561C269FD183007BFD5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C5561B269FD183007BFD5E /* AppDelegate.swift */; };
 		24C5561E269FD183007BFD5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C5561D269FD183007BFD5E /* SceneDelegate.swift */; };
 		24C55620269FD183007BFD5E /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C5561F269FD183007BFD5E /* ComposeViewController.swift */; };
@@ -64,6 +66,8 @@
 		2416A55026A4A49F004A2350 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		2416A55226A4A537004A2350 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		2416A55426A4F605004A2350 /* UITextView+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Placeholder.swift"; sourceTree = "<group>"; };
+		2416A55726A50839004A2350 /* PhotoEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoEditor.storyboard; sourceTree = "<group>"; };
+		2416A55926A50A6D004A2350 /* PhotoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorViewController.swift; sourceTree = "<group>"; };
 		24C55618269FD183007BFD5E /* BGCSproutWorkshop2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BGCSproutWorkshop2021.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C5561B269FD183007BFD5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24C5561D269FD183007BFD5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,8 +112,13 @@
 		2416A51E26A3CCA3004A2350 /* Photo Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				2416A53E26A4A421004A2350 /* Photo Gallery */,
-				2416A55226A4A537004A2350 /* PhotoManager.swift */,
+				2416A53F26A4A421004A2350 /* PhotoGallery.storyboard */,
+				2416A54226A4A421004A2350 /* PhotoGalleryViewController.swift */,
+				2416A54126A4A421004A2350 /* PhotosViewController.swift */,
+				2416A54326A4A421004A2350 /* AlbumsViewController.swift */,
+				2416A54426A4A421004A2350 /* GridViewCell.swift */,
+				2416A54026A4A421004A2350 /* AlbumViewCell.swift */,
+				2416A55026A4A49F004A2350 /* AlbumModel.swift */,
 			);
 			path = "Photo Gallery";
 			sourceTree = "<group>";
@@ -118,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				24C5561F269FD183007BFD5E /* ComposeViewController.swift */,
+				2416A55226A4A537004A2350 /* PhotoManager.swift */,
 				2416A53C26A49923004A2350 /* AttachedImageButton.swift */,
 			);
 			path = Compose;
@@ -143,18 +153,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2416A53E26A4A421004A2350 /* Photo Gallery */ = {
+		2416A55626A507FA004A2350 /* Photo Editor */ = {
 			isa = PBXGroup;
 			children = (
-				2416A53F26A4A421004A2350 /* PhotoGallery.storyboard */,
-				2416A54226A4A421004A2350 /* PhotoGalleryViewController.swift */,
-				2416A54126A4A421004A2350 /* PhotosViewController.swift */,
-				2416A54326A4A421004A2350 /* AlbumsViewController.swift */,
-				2416A54426A4A421004A2350 /* GridViewCell.swift */,
-				2416A54026A4A421004A2350 /* AlbumViewCell.swift */,
-				2416A55026A4A49F004A2350 /* AlbumModel.swift */,
+				2416A55726A50839004A2350 /* PhotoEditor.storyboard */,
+				2416A55926A50A6D004A2350 /* PhotoEditorViewController.swift */,
 			);
-			path = "Photo Gallery";
+			path = "Photo Editor";
 			sourceTree = "<group>";
 		};
 		24C5560F269FD183007BFD5E = {
@@ -185,6 +190,7 @@
 				24C5561D269FD183007BFD5E /* SceneDelegate.swift */,
 				24C55621269FD183007BFD5E /* Main.storyboard */,
 				2416A52B26A3CCB5004A2350 /* Compose */,
+				2416A55626A507FA004A2350 /* Photo Editor */,
 				2416A51E26A3CCA3004A2350 /* Photo Gallery */,
 				2416A52E26A3CEA6004A2350 /* Extensions */,
 				24C55624269FD186007BFD5E /* Assets.xcassets */,
@@ -318,6 +324,7 @@
 				2416A54826A4A421004A2350 /* PhotoGallery.storyboard in Resources */,
 				24C55628269FD186007BFD5E /* LaunchScreen.storyboard in Resources */,
 				24C55625269FD186007BFD5E /* Assets.xcassets in Resources */,
+				2416A55826A50839004A2350 /* PhotoEditor.storyboard in Resources */,
 				24C55623269FD183007BFD5E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +359,7 @@
 				24C55620269FD183007BFD5E /* ComposeViewController.swift in Sources */,
 				24C5561C269FD183007BFD5E /* AppDelegate.swift in Sources */,
 				2416A53826A3D171004A2350 /* PHAssetCollection+Album.swift in Sources */,
+				2416A55A26A50A6E004A2350 /* PhotoEditorViewController.swift in Sources */,
 				2416A54D26A4A421004A2350 /* GridViewCell.swift in Sources */,
 				24C5561E269FD183007BFD5E /* SceneDelegate.swift in Sources */,
 				2416A53D26A49923004A2350 /* AttachedImageButton.swift in Sources */,
