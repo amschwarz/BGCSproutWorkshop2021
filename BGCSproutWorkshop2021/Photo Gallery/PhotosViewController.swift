@@ -1,5 +1,6 @@
 //
 //  PhotosViewController.swift
+//  postikard
 //
 //  Created by Allison Schwarz on 5/8/19.
 //  Copyright © 2019 Allison Schwarz. All rights reserved.
@@ -17,9 +18,8 @@ class PhotosViewController: UIViewController {
     @IBOutlet weak var selected: UIImageView!
     
     private var photos: PHFetchResult<PHAsset>?
-    var selectedAsset : PHAsset?
+    var selectedAsset: PHAsset?
     
-    fileprivate var thumbnailSize: CGSize!
     private static let cellIdentifier = "GridViewCell"
     
     override func viewDidLoad() {
@@ -30,9 +30,6 @@ class PhotosViewController: UIViewController {
         imageScrollView.delegate = self
         imageScrollView.minimumZoomScale = 1.0
         imageScrollView.maximumZoomScale = 100.0
-
-        let scale = UIScreen.main.scale
-        thumbnailSize = CGSize(width: 200.0 * scale, height: 200.0 * scale)
     }
     
     func setPhotos(photos: PHFetchResult<PHAsset>?) {
@@ -71,7 +68,7 @@ extension PhotosViewController : UICollectionViewDataSource {
         
         // Request an image for the asset from the PHCachingImageManager.
         cell.representedAssetIdentifier = asset.localIdentifier
-        PhotoManager.shared.imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+        PhotoManager.shared.imageManager.requestImage(for: asset, targetSize: PhotoManager.shared.thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
             if cell.representedAssetIdentifier == asset.localIdentifier {
                 cell.photo.image = image
             }

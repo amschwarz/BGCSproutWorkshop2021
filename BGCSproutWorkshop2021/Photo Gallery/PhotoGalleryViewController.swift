@@ -1,5 +1,6 @@
 //
 //  PhotoGalleryViewController.swift
+//  postikard
 //
 //  Created by Allison Schwarz on 5/12/19.
 //  Copyright © 2019 Allison Schwarz. All rights reserved.
@@ -8,17 +9,17 @@
 import UIKit
 import Photos
 
-protocol PhotoGalleryViewControllerDelegate {
-    func isShowingAlbumsDropDown(_ showing: Bool)
+protocol PhotoGalleryDelegate: AnyObject {
+    func didSelectImage(_ asset: PHAsset)
 }
 
 class PhotoGalleryViewController: UIViewController {
     
+    weak var delegate: PhotoGalleryDelegate?
+    
     @IBOutlet weak var albumsView: UIView!
     @IBOutlet weak var gallery: UIView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
-    var delegate: PhotoGalleryViewControllerDelegate?
     
     private var allPhotos: PHFetchResult<PHAsset>?
     
@@ -27,7 +28,6 @@ class PhotoGalleryViewController: UIViewController {
     private var albumsViewController : AlbumsViewController?
     private var fetchOptions = PHFetchOptions()
     private var selectButton : UIBarButtonItem?
-    
     
     let allPhotosString = NSLocalizedString("All Photos", comment:"")
     
@@ -39,7 +39,6 @@ class PhotoGalleryViewController: UIViewController {
         
         PHPhotoLibrary.shared().register(self)
         loadPhotos()
-        
     }
     
     private func loadPhotos() {
@@ -89,13 +88,18 @@ class PhotoGalleryViewController: UIViewController {
         gallery.isHidden = !isGalleryHidden
         albumsView.isHidden = isGalleryHidden
         navigationItem.rightBarButtonItem = gallery.isHidden ? nil : selectButton
-        delegate?.isShowingAlbumsDropDown(gallery.isHidden)
     }
     
     @objc private func titleWasTapped() {
         guard albums.count > 0 else {return}
         switchView()
         configureTitleView(isDropDown: !albumsView.isHidden)
+    }
+    
+    @objc private func selectTapped() {
+        guard let asset = galleryViewController?.selectedAsset else {return}
+        delegate?.didSelectImage(asset)
+        dismiss(animated: true, completion: nil)
     }
     
     func fetchAllPhotos() {
@@ -123,8 +127,13 @@ class PhotoGalleryViewController: UIViewController {
         self.albums.append(album)
     }
     
-    @objc private func selectTapped() {
-        //Todo: Pass back selected photo.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "embedGallery" {
+            galleryViewController = segue.destination as? PhotosViewController
+        } else if segue.identifier == "embedAlbums" {
+            albumsViewController = segue.destination as? AlbumsViewController
+            albumsViewController?.delegate = self
+        }
     }
     
 }

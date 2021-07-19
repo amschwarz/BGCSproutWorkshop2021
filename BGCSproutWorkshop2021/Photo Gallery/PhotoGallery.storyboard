@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LSC-jM-4Zk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e9i-bR-lpa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Photo Gallery View Controller-->
+        <!--All Photos-->
         <scene sceneID="YW8-k0-Ksp">
             <objects>
                 <viewController id="Bj7-lk-YpB" customClass="PhotoGalleryViewController" customModule="BGCSproutWorkshop2021" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,16 +47,27 @@
                             <constraint firstItem="lxy-JJ-sSU" firstAttribute="leading" secondItem="9VH-7m-GXs" secondAttribute="leading" id="xaS-50-Ij3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kG5-aa-TmZ"/>
+                    <navigationItem key="navigationItem" title="All Photos" id="kG5-aa-TmZ"/>
                     <connections>
                         <outlet property="albumsView" destination="bJe-Iz-26h" id="6e0-BO-6ys"/>
                         <outlet property="gallery" destination="lxy-JJ-sSU" id="vjI-xI-UWP"/>
                         <outlet property="spinner" destination="XBO-3W-vqJ" id="l15-iR-fzV"/>
+                        <segue destination="DYL-15-m8d" kind="show" identifier="positionPhoto" id="PTj-cv-trg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1j-q6-VL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4678.2608695652179" y="201.5625"/>
+        </scene>
+        <!--PositionPhoto-->
+        <scene sceneID="A9a-5H-81p">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PositionPhoto" bundleIdentifier="com.posti.postikit" id="DYL-15-m8d" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6gk-xl-vm1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Vo-T9-3Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4369" y="-328"/>
         </scene>
         <!--Photos View Controller-->
         <scene sceneID="Zbf-VO-cGD">
@@ -225,20 +237,20 @@
             <point key="canvasLocation" x="4670" y="909"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="1bl-9L-8gE">
+        <scene sceneID="iPV-24-1YH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LSC-jM-4Zk" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e9i-bR-lpa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P6G-Ox-1DQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RHO-M0-slU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Bj7-lk-YpB" kind="relationship" relationship="rootViewController" id="Zte-dY-8LM"/>
+                        <segue destination="Bj7-lk-YpB" kind="relationship" relationship="rootViewController" id="S9C-O3-s1A"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CGY-eJ-LDc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3kd-HS-6zO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3768.115942028986" y="201.5625"/>
         </scene>

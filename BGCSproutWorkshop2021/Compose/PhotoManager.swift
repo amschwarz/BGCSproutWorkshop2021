@@ -1,8 +1,8 @@
 //
 //  PhotoManager.swift
+//  BGCSproutWorkshop2021
 //
-//  Created by Allison Schwarz on 5/15/19.
-//  Copyright © 2019 Allison Schwarz. All rights reserved.
+//  Created by Allison Schwarz on 7/18/21.
 //
 
 import UIKit
@@ -14,10 +14,10 @@ open class PhotoManager {
     
     public let imageManager = PHCachingImageManager()
     
-    public var hasSaved = false
-
-    public static let context = CIContext()
-    
     private init() {}
-
+    
+    var thumbnailSize: CGSize {
+        let scale = UIScreen.main.scale
+        return CGSize(width: 200.0 * scale, height: 200.0 * scale)
+    }
 }

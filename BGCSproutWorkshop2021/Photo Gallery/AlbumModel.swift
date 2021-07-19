@@ -1,8 +1,8 @@
 //
 //  AlbumModel.swift
+//  BGCSproutWorkshop2021
 //
-//  Created by Allison Schwarz on 5/10/19.
-//  Copyright © 2019 Allison Schwarz. All rights reserved.
+//  Created by Allison Schwarz on 7/18/21.
 //
 
 import UIKit
