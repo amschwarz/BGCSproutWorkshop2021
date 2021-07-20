@@ -15,12 +15,10 @@ class PhotoEditorViewController: UIViewController {
     
     weak var delegate: PhotoEditorDelegate?
     var originalImage: UIImage?
-    private(set) var latestCenter = CGPoint()
+    private var latestCenter = CGPoint()
     
     @IBOutlet weak var imageBackground: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    
-
     @IBOutlet weak var gridView: GridView! {
         didSet {
             gridView.isHidden = true
@@ -85,10 +83,13 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate {
     @IBAction public func didPinch(_ gestureRecognizer : UIPinchGestureRecognizer) {
         updateOverlay(with: gestureRecognizer)
         
+        //Get the gesture zoom scale and transform the image
         let scale = gestureRecognizer.scale
         imageView.transform = imageView.transform.scaledBy(x: scale, y: scale)
+        //Reset gesture scale
         gestureRecognizer.scale = 1
-        
+
+        //Recenter image in view
         imageView.center = CGPoint(x: imageView.bounds.width/2.0, y: imageView.bounds.height/2.0)
     }
     
