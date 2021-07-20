@@ -15,21 +15,28 @@ class GridView: UIView
     
     private var path = UIBezierPath()
 
-    fileprivate var gridWidth: CGFloat
+    private var gridWidth: CGFloat
     {
         bounds.width/CGFloat(gridNumber)
     }
 
-    fileprivate var gridHeight: CGFloat
+    private var gridHeight: CGFloat
     {
         bounds.height/CGFloat(gridNumber)
     }
 
-    fileprivate var gridCenter: CGPoint {
+    private var gridCenter: CGPoint {
         CGPoint(x: bounds.midX, y: bounds.midY)
     }
+    
+    override func draw(_ rect: CGRect)
+    {
+        drawGrid()
+        gridColor.setStroke()
+        path.stroke()
+    }
 
-    fileprivate func drawGrid()
+    private func drawGrid()
     {
         path = UIBezierPath()
         path.lineWidth = gridLineWidth
@@ -50,12 +57,5 @@ class GridView: UIView
         }
 
         path.close()
-    }
-
-    override func draw(_ rect: CGRect)
-    {
-        drawGrid()
-        gridColor.setStroke()
-        path.stroke()
     }
 }
