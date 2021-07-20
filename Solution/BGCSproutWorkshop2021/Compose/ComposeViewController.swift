@@ -64,6 +64,7 @@ class ComposeViewController: UIViewController {
         guard let editorViewController = storyboard.instantiateInitialViewController() as? PhotoEditorViewController else { return }
         editorViewController.originalImage = attachedImage
         editorViewController.modalPresentationStyle = .overFullScreen
+        editorViewController.delegate = self
         present(editorViewController, animated: true, completion: nil)
     }
     
@@ -103,6 +104,12 @@ extension ComposeViewController: PhotoGalleryDelegate {
 extension ComposeViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         shouldEnableSend()
+    }
+}
+
+extension ComposeViewController: PhotoEditorDelegate {
+    func savedPhoto(_ image: UIImage) {
+        attachedImage = image
     }
 }
 
