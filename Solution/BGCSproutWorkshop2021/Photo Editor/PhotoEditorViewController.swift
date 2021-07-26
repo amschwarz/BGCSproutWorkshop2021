@@ -47,6 +47,7 @@ class PhotoEditorViewController: UIViewController {
     @IBAction func saveTapped(_ sender: Any) {
         let image = view.toImage(imageBackground.frame)
         delegate?.savedPhoto(image)
+        dismiss(animated: false, completion: nil)
     }
     
     private func updateOverlay(with gesture: UIGestureRecognizer) {
